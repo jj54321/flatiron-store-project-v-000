@@ -30,7 +30,6 @@ group :test, :development do
   gem "rack_session_access"
   gem "capybara-webkit"
   gem "selenium-webdriver"
-  gem "better_errors"
   gem "binding_of_caller"
   gem "factory_girl_rails"
   gem "simplecov"
@@ -47,6 +46,6 @@ group :production do
 end
 
 gem "bootstrap-sass", "~> 3.1.1"
-gem "airbrake"
+gem 'airbrake', '~> 4.3'
 gem "faker"
 gem "friendly_id"
