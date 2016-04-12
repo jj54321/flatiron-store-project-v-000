@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   def current_cart
     @current_cart = Cart.find_by(id: self.current_cart_id)
   end
+
+  def reset
+    @current_cart = nil
+  end
 end

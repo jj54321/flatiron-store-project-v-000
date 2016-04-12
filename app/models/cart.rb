@@ -16,9 +16,20 @@ class Cart < ActiveRecord::Base
     if add
       add.quantity += 1
     else
-      add = line_items.build(item_id: item, cart_id: self.id)
+      add = self.line_items.build(item_id: item, cart_id: self.id)
     end
     add
+  end
+
+  def checkout_cart
+    self.line_items.each do |li|
+      li.item.inventory -= li.quantity
+      li.item.save
+    end
+    self.line_items.clear
+    self.status = "submitted"
+    self.user.current_cart_id = nil
+    self.user.save
   end
 
 
